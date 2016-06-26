@@ -1,19 +1,27 @@
 .header{
   text-align: center;
+  color: black;
+  font-size: 4em;
 }
 .text{
   text-align: center;
   padding-top: 50px;
+  margin-bottom: 60px;
+  color: black;
+  font-size: 2em;
 }
 body{
-  background-color: lightgrey;
+  background-color: #707070;
 }
-.blue{
-  
+.area{
+  text-align: center;
 }
-.green{
-
+.doors{
+  display: inline-block;
+  margin: 0 30px;
 }
-.orange{
-
+.replay{
+  text-align: center;
+  font-size: 10em;
+  font-weight: bolder;
 }

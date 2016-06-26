@@ -16,15 +16,18 @@
     <body>
       <h1 class="header">Wanna Make a Deal?</h1>
       <p class="text">One door holds a BAD thing.<br>One door holds a NEUTRAL thing.<br>One door holds a GOOD thing.<br></p>
-      <div>
-        <img src="./images/blue_door.png" onclick="openDoor" class="blue">
+      <div class="area">
+        <div class="doors">
+          <img src="./images/blue_door.png" id="blue" onclick="openDoor(this.id)">
+        </div>
+        <div class="doors">
+          <img src="./images/green_door.png" id="green" onclick="openDoor(this.id)">
+        </div>
+        <div class="doors">
+          <img src="./images/orange_door.png" id="orange" onclick="openDoor(this.id)">
+        </div>
       </div>
-      <div>
-        <img src="./images/green_door.png" onclick="openDoor" class="green">
-      </div>
-      <div>
-        <img src="./images/orange_door.png" onclick="openDoor" class="orange">
-      </div>
+      <p class="replay"></p>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -32,5 +35,45 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     </body>
     <script>
+    var gatekeep = 0;
+
+    function again(){
+      $(".replay").html("<a href='file:///Users/marcsalo/Documents/AcademyPGH/HTML%20and%20CSS/100%20Exercises/ThreeDoors/ThreeDoors.html'>Play Again?</a>")
+    }
+
+    function openDoor(doorClass){
+      if(doorClass=="blue"){
+        $(".header").html("WRONG!!");
+        $(".text").html("Fire usually means something bad dummy.");
+        document.getElementById('blue').src="./images/blue_door_fire.png";
+        $("#green").attr("id","none");
+        $("#orange").attr("id","none");
+        again();
+      }
+      if(doorClass=="green"){
+        $(".header").html("CONGRATS!!");
+        $(".text").html("You picked the GOOD thing!");
+        document.getElementById('green').src="./images/puppy.gif";
+        $("#blue").attr("id","none");
+        $("#orange").attr("id","none");
+        again();
+      }
+      if(doorClass=="orange"){
+        if(gatekeep==0){
+          $(".header").html("Uh Oh...");
+          $(".text").html("I wouldn't go through that door if I were you.");
+          document.getElementById('orange').src="./images/orange_door_fire.png";
+          gatekeep=1;
+        }
+        else if(gatekeep==1){
+          $(".header").html("I warned you!");
+          $(".text").html("");
+          document.getElementById('orange').src="./images/skeletons.gif";
+          $("#green").attr("id","none");
+          $("#blue").attr("id","none");
+          again();
+        }
+      }
+    }
     </script>
 </html>
