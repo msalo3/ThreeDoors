@@ -2,7 +2,7 @@
 <html lang=en>
     <head>
         <meta charset="UTF-8">
-        <title>This is my page!</title>
+        <title>Door Game!</title>
 
         <!-- CSS Goes Here -->
         <!-- Latest compiled and minified CSS -->
@@ -36,7 +36,13 @@
     </body>
     <script>
     var gatekeep = 0;
+    var num=0;
+    var badArray = ["./images/blob.gif","./images/dancemen.gif","./images/skeletons.gif","./images/pizza.gif","./images/wtf.gif"];
+    var goodArray = ["./images/catchkid.gif","./images/dogshoes.gif","./images/puppy.gif","./images/rollup.gif","./images/yawns.gif"];
 
+    function random(){
+      num=Math.floor(Math.random()*5)
+    }
     function again(){
       $(".replay").html("<a href='file:///Users/marcsalo/Documents/AcademyPGH/HTML%20and%20CSS/100%20Exercises/ThreeDoors/ThreeDoors.html'>Play Again?</a>")
     }
@@ -53,7 +59,8 @@
       if(doorClass=="green"){
         $(".header").html("CONGRATS!!");
         $(".text").html("You picked the GOOD thing!");
-        document.getElementById('green').src="./images/puppy.gif";
+        random();
+        document.getElementById('green').src=goodArray[num];
         $("#blue").attr("id","none");
         $("#orange").attr("id","none");
         again();
@@ -68,7 +75,8 @@
         else if(gatekeep==1){
           $(".header").html("I warned you!");
           $(".text").html("");
-          document.getElementById('orange').src="./images/skeletons.gif";
+          random();
+          document.getElementById('orange').src=badArray[num];
           $("#green").attr("id","none");
           $("#blue").attr("id","none");
           again();
